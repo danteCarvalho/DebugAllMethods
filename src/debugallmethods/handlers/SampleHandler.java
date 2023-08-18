@@ -19,16 +19,16 @@ public class SampleHandler extends AbstractHandler {
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		IWorkbenchWindow window = HandlerUtil.getActiveWorkbenchWindowChecked(event);
-		IWorkbenchPage activePage = window.getActivePage();
-		IEditorPart activeEditor = activePage.getActiveEditor();
+		IWorkbenchWindow iWorkbenchWindow = HandlerUtil.getActiveWorkbenchWindowChecked(event);
+		IWorkbenchPage iWorkbenchPage = iWorkbenchWindow.getActivePage();
+		IEditorPart iEditorPart = iWorkbenchPage.getActiveEditor();
 		try {
-			if (activeEditor != null) {
-				IEditorInput input = activeEditor.getEditorInput();
-				IFile arquivo = ((FileEditorInput) input).getFile();
-				FileEditorInput path = (FileEditorInput) input;
-				IPath path2 = path.getPath();
-				File file = path2.toFile();
+			if (iEditorPart != null) {
+				IEditorInput iEditorInput = iEditorPart.getEditorInput();
+				IFile iFile = ((FileEditorInput) iEditorInput).getFile();
+				FileEditorInput fileEditorInput = (FileEditorInput) iEditorInput;
+				IPath iPath = fileEditorInput.getPath();
+				File file = iPath.toFile();
 				Scanner scanner = new Scanner(file);
 				String classe = null;
 				int numeroLinha = 0;
@@ -57,7 +57,7 @@ public class SampleHandler extends AbstractHandler {
 						}
 						continue;
 					}
-					if (linha.startsWith("//")) {
+					if (linha.startsWith("//") || linha.contains("@")) {
 						continue;
 					}
 					if (add) {
@@ -66,7 +66,7 @@ public class SampleHandler extends AbstractHandler {
 						}
 						for (String hint : debugHints) {
 							if (linha.contains(hint)) {
-								JDIDebugModel.createLineBreakpoint(arquivo, classe, numeroLinha, -1, -1, 0, true, null);
+								JDIDebugModel.createLineBreakpoint(iFile, classe, numeroLinha, -1, -1, 0, true, null);
 								add = false;
 								continue;
 							}
@@ -87,4 +87,5 @@ public class SampleHandler extends AbstractHandler {
 		}
 		return null;
 	}
+
 }
