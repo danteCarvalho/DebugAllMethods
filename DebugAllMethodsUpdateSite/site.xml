@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description name="DebugAllMethodsUpdateSite">
+      DebugAllMethodsUpdateSite
+   </description>
+   <feature url="features/DebugAllMethodsFeature_1.0.0.jar" id="DebugAllMethodsFeature" version="1.0.0"/>
+</site>

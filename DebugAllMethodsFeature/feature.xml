@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="DebugAllMethodsFeature"
+      label="DebugAllMethodsFeature"
+      version="1.0.0">
+
+   <description url="http://www.example.com/description">
+      Press Ctrl+6 to put a breakpoint in the first debuggble line of all methods of the current class.
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      No copyright
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      MIT
+   </license>
+
+   <plugin
+         id="DebugAllMethods"
+         version="1.0.0"/>
+
+</feature>
